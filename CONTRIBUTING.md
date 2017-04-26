@@ -19,3 +19,10 @@
 
 Refer to [http://meanjs.org/docs.html#folders](http://meanjs.org/docs.html#folders)
 for reference.
+
+## Setup Development Environment
+
+### Visual Studio Code
+
+Install the following plugins:
+- ESLint. It integrates `ESLint` into VS Code
