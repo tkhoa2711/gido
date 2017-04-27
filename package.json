@@ -1,0 +1,24 @@
+{
+  "name": "mgmt",
+  "version": "0.0.1",
+  "description": "A minimal project management tool",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkhoa2711/mgmt.git"
+  },
+  "keywords": [
+    "mean",
+    "angular",
+    "node"
+  ],
+  "author": "Khoa Le",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tkhoa2711/mgmt/issues"
+  },
+  "homepage": "https://github.com/tkhoa2711/mgmt#readme"
+}
