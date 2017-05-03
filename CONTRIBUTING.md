@@ -26,3 +26,16 @@ for reference.
 
 Install the following plugins:
 - ESLint. It integrates `ESLint` into VS Code
+- You may need to override default editor settings where its default
+indentation size for JavaScript is 4 spaces. The same can be done for other
+languages such as HTML, CSS.
+
+```json
+{
+  "[javascript]": {
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": true,
+	"editor.tabSize": 2
+  }
+}
+```
