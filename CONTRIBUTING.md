@@ -39,3 +39,10 @@ languages such as HTML, CSS.
   }
 }
 ```
+## Run The Project
+
+The project can be executed with the following command in local/dev environment:
+
+```
+gulp
+```
