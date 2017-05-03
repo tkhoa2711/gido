@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/tkhoa2711/mgmt/issues"
   },
-  "homepage": "https://github.com/tkhoa2711/mgmt#readme"
+  "homepage": "https://github.com/tkhoa2711/mgmt#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
