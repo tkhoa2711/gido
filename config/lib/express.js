@@ -4,12 +4,23 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   methodOverride = require('method-override'),
+  morgan = require('morgan'),
   path = require('path');
 
 /**
  * Initialize middleware for Express app
  */
 module.exports.initMiddleware = function (app) {
+  switch (process.env.NODE_ENV) {
+  case 'development':
+    app.use(morgan('dev'));
+    break;
+  case 'production':
+    // TODO should log to a file instead of stdout
+    app.use(morgan('common'));
+    break;
+  };
+
   // for parsing application/x-www-form-urlencoded and application/json
   // NOTE: the body parsing middleware should be placed before methodOverride
   app.use(bodyParser.urlencoded({extended: true}));
