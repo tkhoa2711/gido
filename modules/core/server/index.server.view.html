@@ -5,8 +5,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <base href="/">
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
 </head>
-<body>
+<body ng-app="application">
   <h3>Hello</h3>
+
+  <!-- Body content -->
+  <section ui-view></section>
+
+  <!-- JavaScript files -->
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+  <script src="modules/core/client/core.client.route.js"></script>
+  <script src="modules/core/client/init.js"></script>
 </body>
 </html>

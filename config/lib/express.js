@@ -42,6 +42,20 @@ module.exports.initViewEngine = function (app) {
 };
 
 /**
+ * Configure routing to serve static files
+ */
+module.exports.initModulesClientRoutes = function (app) {
+  // serve client-side libraries
+  app.use('/', express.static(path.resolve('./public')));
+
+  // serve client-side application code
+  // TODO refactor this with globbbing
+  ['/modules/core/client/'].forEach(function (staticPath) {
+    app.use(staticPath, express.static(path.resolve('./' + staticPath)));
+  });
+};
+
+/**
  * Configure routing on the server side
  */
 module.exports.initModulesServerRoutes = function (app) {
@@ -60,6 +74,7 @@ module.exports.init = function () {
   var app = express();
   this.initMiddleware(app);
   this.initViewEngine(app);
+  this.initModulesClientRoutes(app);
   this.initModulesServerRoutes(app);
   return app;
 };
