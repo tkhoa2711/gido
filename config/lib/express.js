@@ -19,7 +19,7 @@ module.exports.initMiddleware = function (app) {
     // TODO should log to a file instead of stdout
     app.use(morgan('common'));
     break;
-  };
+  }
 
   // for parsing application/x-www-form-urlencoded and application/json
   // NOTE: the body parsing middleware should be placed before methodOverride
