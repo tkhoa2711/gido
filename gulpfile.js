@@ -22,4 +22,6 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
+gulp.task('test', ['lint']);
+
 gulp.task('default', ['lint', 'dev', 'nodemon']);
