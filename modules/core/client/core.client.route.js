@@ -13,7 +13,7 @@
     // routing for home page
     $stateProvider
       .state('home', {
-        url: '',
+        url: '/',
         templateUrl: 'modules/core/client/view/home.client.view.html'
       });
   }
