@@ -1,5 +1,6 @@
 {
   "node": true,         // Enable global variables when code is running inside NodeJS runtime environment
+  "jasmine": true,      // Enable globals available when code is running inside Jasmine tests.
   "eqeqeq": true,       // Require triple equals i.e. `===`.
   "immed": true,        // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
   "quotmark": "single", // Define quotes to string values.

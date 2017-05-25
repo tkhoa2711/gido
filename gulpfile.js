@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
+  jasmine = require('gulp-jasmine'),
   jshint = require('gulp-jshint'),
   nodemon = require('gulp-nodemon');
 
@@ -22,6 +23,22 @@ gulp.task('lint', function () {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', ['lint']);
+gulp.task('jasmine', function () {
+  gulp.src('modules/**/test/*.js')
+    .pipe(jasmine({
+      config: {
+        spec_dir: '**/test',
+        spec_files: [
+          '*.test.js'
+        ],
+        stopSpecOnExpectationFailure: false,
+        random: false
+      }
+    })).on('error', function (err) {
+      console.log('Test(s) failed');
+    });
+});
+
+gulp.task('test', ['lint', 'jasmine']);
 
 gulp.task('default', ['lint', 'dev', 'nodemon']);
