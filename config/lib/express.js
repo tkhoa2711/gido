@@ -1,6 +1,7 @@
 'use strict';
 
-var express = require('express'),
+var config = require('../config'),
+  express = require('express'),
   bodyParser = require('body-parser'),
   cookieParser = require('cookie-parser'),
   methodOverride = require('method-override'),
@@ -49,8 +50,7 @@ module.exports.initModulesClientRoutes = function (app) {
   app.use('/', express.static(path.resolve('./public')));
 
   // serve client-side application code
-  // TODO refactor this with globbbing
-  ['/modules/core/client/'].forEach(function (staticPath) {
+  config.folders.client.forEach(function (staticPath) {
     app.use(staticPath, express.static(path.resolve('./' + staticPath)));
   });
 };
@@ -60,8 +60,7 @@ module.exports.initModulesClientRoutes = function (app) {
  */
 module.exports.initModulesServerRoutes = function (app) {
   // Obtain all routing files and initialize them
-  // TODO refactor this with globbing
-  ['modules/core/server/core.server.route.js'].forEach(function (_path) {
+  config.files.server.routes.forEach(function (_path) {
     var setup_config = require(path.resolve(_path));
     setup_config(app);
   });
