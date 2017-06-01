@@ -69,6 +69,12 @@ var initGlobalConfigFiles = function (config, assets) {
 
   // glob routing files
   config.files.server.routes = getGlobbedPaths(assets.server.routes);
+
+  // glob data models
+  config.files.server.models = getGlobbedPaths(assets.server.models);
+
+  // glob all configurations
+  config.files.server.configs = getGlobbedPaths(assets.server.config);
 };
 
 /**
@@ -81,11 +87,17 @@ var initGlobalConfig = function () {
 
   // get all configs
   var defaultConfig = require(path.join(process.cwd(), 'config/env/default'));
-  var config = defaultConfig;
+  var envConfig = require(path.join(process.cwd(), 'config/env', process.env.NODE_ENV));
+  var config = _.merge(defaultConfig, envConfig);
 
   // glob all the config files and folders, excluding assets
   initGlobalConfigFolders(config, assets);
   initGlobalConfigFiles(config, assets);
+
+  // expose utility functions
+  config.util = {
+    getGlobbedPaths: getGlobbedPaths
+  };
 
   return config;
 };

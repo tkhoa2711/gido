@@ -15,6 +15,8 @@ module.exports = {
     ]
   },
   server: {
-    routes: ['modules/*/server/route/**/*.js']
+    config: 'modules/*/server/config/*.config.js',
+    models: 'modules/*/server/model/**/*.model.js',
+    routes: ['modules/*/server/route/**/*.route.js']
   }
 };
