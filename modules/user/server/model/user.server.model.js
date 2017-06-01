@@ -10,10 +10,13 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
   username: {
     type: String,
+    unique: 'Username already exists',
     trim: true
   },
   email: {
     type: String,
+    unique: true,
+    default: '',
     trim: true
   },
   password: String,
@@ -47,7 +50,7 @@ UserSchema.methods.hashPassword = function (password) {
  * Helper method for authenticating user (using password)
  */
 UserSchema.methods.authenticate = function (password) {
-  this.password = password;
+  this.password = this.hashPassword(password);
 };
 
 mongoose.model('User', UserSchema);
