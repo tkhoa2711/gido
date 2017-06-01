@@ -6,6 +6,7 @@ var config = require('../config'),
   cookieParser = require('cookie-parser'),
   methodOverride = require('method-override'),
   morgan = require('morgan'),
+  session = require('express-session'),
   path = require('path');
 
 /**
@@ -43,6 +44,27 @@ module.exports.initViewEngine = function (app) {
 };
 
 /**
+ * Initialize user sessions
+ */
+module.exports.initSession = function (app) {
+  app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: config.sessionSecret
+    // TODO use different session store other than the default in-memory
+  }));
+};
+
+/**
+ * Invoke configurations of server modules
+ */
+module.exports.initModulesConfiguration = function (app) {
+  config.files.server.configs.forEach(function (configPath) {
+    require(path.resolve(configPath))(app);
+  });
+};
+
+/**
  * Configure routing to serve static files
  */
 module.exports.initModulesClientRoutes = function (app) {
@@ -73,6 +95,8 @@ module.exports.init = function () {
   var app = express();
   this.initMiddleware(app);
   this.initViewEngine(app);
+  this.initSession(app);
+  this.initModulesConfiguration(app);
   this.initModulesClientRoutes(app);
   this.initModulesServerRoutes(app);
   return app;
