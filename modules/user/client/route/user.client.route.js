@@ -9,9 +9,13 @@
 
   function clientRoute($stateProvider) {
     $stateProvider
-      .state('signin', {
-        url: '/signin',
-        templateUrl: 'modules/user/client/view/signin.client.view.html'
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'modules/user/client/view/signup.client.view.html'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'modules/user/client/view/login.client.view.html'
       });
   }
 })();
