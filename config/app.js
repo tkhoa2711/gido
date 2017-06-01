@@ -1,9 +1,15 @@
 'use strict';
 
 var config = require('./config'),
+  mongoose = require('./lib/mongoose'),
   express = require('./lib/express');
 
 module.exports.start = function start() {
+  // initialize MongoDB
+  mongoose.loadModels();
+  mongoose.connect();
+
+  // initialize Express app
   var app = express.init();
   app.listen(config.port, function () {
     console.log('--');
