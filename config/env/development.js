@@ -2,7 +2,7 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://localhost/gido',
+    uri: process.env.MONGODB_URI || 'mongodb://localhost/gido',
     options: {
       user: '',
       pass: ''
