@@ -4,7 +4,7 @@
   "description": "A minimal project management tool",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
