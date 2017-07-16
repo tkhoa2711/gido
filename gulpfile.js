@@ -3,7 +3,8 @@
 var gulp = require('gulp'),
   jasmine = require('gulp-jasmine'),
   jshint = require('gulp-jshint'),
-  nodemon = require('gulp-nodemon');
+  nodemon = require('gulp-nodemon'),
+  runSequence = require('run-sequence');
 
 gulp.task('dev', function () {
   process.env.NODE_ENV = 'development';
@@ -39,6 +40,10 @@ gulp.task('jasmine', function () {
     });
 });
 
-gulp.task('test', ['lint', 'jasmine']);
+gulp.task('test', function (done) {
+  runSequence('lint', 'jasmine', done);
+});
 
-gulp.task('default', ['lint', 'dev', 'nodemon']);
+gulp.task('default', function (done) {
+  runSequence('lint', 'dev', 'nodemon', done);
+});
