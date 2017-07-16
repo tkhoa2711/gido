@@ -27,7 +27,7 @@ gulp.task('jasmine', function () {
   gulp.src('modules/**/test/*.js')
     .pipe(jasmine({
       config: {
-        spec_dir: '**/test',
+        spec_dir: 'test',
         spec_files: [
           '*.test.js'
         ],
